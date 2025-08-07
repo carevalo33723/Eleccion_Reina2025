@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Layaut/index::head">
+	<meta charset="UTF-8" />
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+
+		<!-- Preloader -->
+		<div class="preloader flex-column justify-content-center align-items-center">
+			<img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+		</div>
+		<header th:replace="Layaut/index::header"></header>
+		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:replace="Layaut/index::sidebar"> </aside>
+
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div th:replace="Layaut/index::header1"></div>
+
+			<!-- contenido dinamico -->
+
+			<section class="content">
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Alta de Socios</h3>
+            </div>
+            
+            <!-- Mensajes de éxito y error -->
+						<div th:if="${mensajeExito}" class="alert alert-success">
+							<p th:text="${mensajeExito}"></p>
+						</div>
+						<div th:if="${mensajeError}" class="alert alert-danger">
+							<p th:text="${mensajeError}"></p>
+						</div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <section class="content">
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Alta de Socios</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form th:action="@{/guardarArre}" th:object="${CentroO}" method="post">
+                    <input type="hidden" th:field="*{id}" />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" th:field="*{nombre}" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Apellido</label>
+                                <input type="text" class="form-control" th:field="*{apellido}" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input type="text" class="form-control" th:field="*{direccion}" required />
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Teléfono</label>
+                                <input type="text" class="form-control" th:field="*{telefono}" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" th:field="*{correoElectronico}" required />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Socio</label>
+                                <select class="form-control" id="centroSelect" name="Socio.id">
+                                    <option value="">Selecciona un Socio</option>
+                                    <option th:each="centro : ${listaCentros}" th:value="${centro.id}"
+									th:text="${centro.nombre}" ></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Socio</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+			<!-- /.fin de contenido -->
+		</div>
+
+
+
+		<footer th:replace="Layaut/index::footer"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+<!-- Mensaje de éxito -->
+
+</div>
+
+
+
+
+
+</body>
+
+</html>
