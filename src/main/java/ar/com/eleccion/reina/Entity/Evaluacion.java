@@ -26,9 +26,25 @@ public class Evaluacion {
 	@DateTimeFormat(pattern =  "yyyy-MM-dd")
 	private LocalDate fecha;
 	
+	/**
+	 * FIX = RELACION ENTRE CANDIDATA Y EVALUACION
+	 */
 	@ManyToOne
-	@JoinColumn(name = "id_actor")
-	private Actores actor;
+	@JoinColumn(name = "id_candidata")
+	private Candidata candidata;
+	/**
+	 * FIX = RELACION ENTRE juez Y EVALUACION
+	 */
+	@ManyToOne
+	@JoinColumn(name = "id_juez")
+	private Juez juez;
+	
+	/**
+	 * FIX = RELACION ENTRE JURADO Y EVALUACION
+	 */
+	@ManyToOne
+	@JoinColumn(name = "id_jurado")
+	private Jurado jurado;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_item")
@@ -38,68 +54,19 @@ public class Evaluacion {
 		super();
 	}
 
-	public Evaluacion(Long id_evaluacion, int nota, Boolean revision, LocalDate fecha, Actores actor, Item item) {
+	public Evaluacion(Long id_evaluacion, int nota, Boolean revision, LocalDate fecha, Candidata candidata, Juez juez,
+			Jurado jurado, Item item) {
 		super();
 		this.id_evaluacion = id_evaluacion;
 		this.nota = nota;
 		this.revision = revision;
 		this.fecha = fecha;
-		this.actor = actor;
+		this.candidata = candidata;
+		this.juez = juez;
+		this.jurado = jurado;
 		this.item = item;
 	}
 
-	public Long getId_evaluacion() {
-		return id_evaluacion;
-	}
-
-	public void setId_evaluacion(Long id_evaluacion) {
-		this.id_evaluacion = id_evaluacion;
-	}
-
-	public int getNota() {
-		return nota;
-	}
-
-	public void setNota(int nota) {
-		this.nota = nota;
-	}
-
-	public Boolean getRevision() {
-		return revision;
-	}
-
-	public void setRevision(Boolean revision) {
-		this.revision = revision;
-	}
-
-	public LocalDate getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
-	}
-
-	public Actores getActor() {
-		return actor;
-	}
-
-	public void setActor(Actores actor) {
-		this.actor = actor;
-	}
-
-	public Item getItem() {
-		return item;
-	}
-
-	public void setItem(Item item) {
-		this.item = item;
-	}
-
-	@Override
-	public String toString() {
-		return "Evaluacion [id_evaluacion=" + id_evaluacion + ", nota=" + nota + ", revision=" + revision + ", fecha="
-				+ fecha + ", actor=" + actor + ", item=" + item + "]";
-	}
+	
 	
 }

@@ -14,82 +14,70 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 
+/**
+ * FIX CAMBIO DE STRATEGY= Se genera una tabla por cada subclase de la jerarquía,
+ *  repitiendo los atributos de la superclase, en cada tabla que representan a las 
+ *  subclases.
+ */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Actores {
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public  class Actores {
+	
+	/**
+	 * el id sera autoincremetal de la superclase
+	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_actor;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+		private Long id;
 	
 	@Basic
 	private String nombre;
 	private String apellido;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_eleccion")
-	private Eleccion eleccion;
-	
-	@OneToMany(mappedBy = "actor")
-	private List<Evaluacion> evaluaciones;
-	
+	private String dni;
 	public Actores() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-
-	public Actores(Long id_actor, String nombre, String apellido, Eleccion eleccion, List<Evaluacion> evaluaciones) {
+	public Actores(Long id, String nombre, String apellido, String dni) {
 		super();
-		this.id_actor = id_actor;
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.eleccion = eleccion;
-		this.evaluaciones = evaluaciones;
+		this.dni = dni;
 	}
-
-	public Long getId_actor() {
-		return id_actor;
+	public Long getId() {
+		return id;
 	}
-
-	public void setId_actor(Long id_actor) {
-		this.id_actor = id_actor;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getApellido() {
 		return apellido;
 	}
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
-	public Eleccion getEleccion() {
-		return eleccion;
+	public String getDni() {
+		return dni;
 	}
-
-	public void setEleccion(Eleccion eleccion) {
-		this.eleccion = eleccion;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
+	
+	
 
-	public List<Evaluacion> getEvaluaciones() {
-		return evaluaciones;
-	}
 
-	public void setEvaluaciones(List<Evaluacion> evaluaciones) {
-		this.evaluaciones = evaluaciones;
-	}
+	
+	
+	
 
-	@Override
-	public String toString() {
-		return "Actores [id_actor=" + id_actor + ", nombre=" + nombre + ", apellido=" + apellido + ", eleccion="
-				+ eleccion + ", evaluaciones=" + evaluaciones + "]";
-	}
+
+	
 	
 }

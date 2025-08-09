@@ -25,27 +25,23 @@ public class Eleccion {
 	@DateTimeFormat(pattern =  "yyyy-MM-dd")
 	private LocalDate fecha;
 
+	
+	/**
+	 * FIX=relacion uno a muchos con cada clase hija para que
+	 * pertenescan a esta eleccion
+	 */
 	@OneToMany(mappedBy = "eleccion")
-	private List<Actores> actores;
+	private List<Juez> juez;
+	@OneToMany(mappedBy = "eleccion")
+	private List<Candidata> actores;
+	
+	@OneToMany(mappedBy = "eleccion")
+	private List<Jurado> jurado;
 	
 	@OneToMany(mappedBy = "eleccion")
 	private List<Actividad> actividades;
 	
-	public Eleccion() {
-		super();
-	}
 
-
-	public Eleccion(Long id_eleccion, String nombre, String tipo, LocalDate fecha, List<Actores> actores,
-			List<Actividad> actividades) {
-		super();
-		this.id_eleccion = id_eleccion;
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.fecha = fecha;
-		this.actores = actores;
-		this.actividades = actividades;
-	}
 
 
 	public Long getId_eleccion() {
@@ -53,9 +49,13 @@ public class Eleccion {
 	}
 
 
+
+
 	public void setId_eleccion(Long id_eleccion) {
 		this.id_eleccion = id_eleccion;
 	}
+
+
 
 
 	public String getNombre() {
@@ -63,9 +63,13 @@ public class Eleccion {
 	}
 
 
+
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
 
 
 	public String getTipo() {
@@ -73,9 +77,13 @@ public class Eleccion {
 	}
 
 
+
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
+
 
 
 	public LocalDate getFecha() {
@@ -83,19 +91,55 @@ public class Eleccion {
 	}
 
 
+
+
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
 
-	public List<Actores> getActores() {
+
+
+	public List<Juez> getJuez() {
+		return juez;
+	}
+
+
+
+
+	public void setJuez(List<Juez> juez) {
+		this.juez = juez;
+	}
+
+
+
+
+	public List<Candidata> getActores() {
 		return actores;
 	}
 
 
-	public void setActores(List<Actores> actores) {
+
+
+	public void setActores(List<Candidata> actores) {
 		this.actores = actores;
 	}
+
+
+
+
+	public List<Jurado> getJurado() {
+		return jurado;
+	}
+
+
+
+
+	public void setJurado(List<Jurado> jurado) {
+		this.jurado = jurado;
+	}
+
+
 
 
 	public List<Actividad> getActividades() {
@@ -103,9 +147,37 @@ public class Eleccion {
 	}
 
 
+
+
 	public void setActividades(List<Actividad> actividades) {
 		this.actividades = actividades;
 	}
+
+
+
+
+	public Eleccion(Long id_eleccion, String nombre, String tipo, LocalDate fecha, List<Juez> juez,
+			List<Candidata> actores, List<Jurado> jurado, List<Actividad> actividades) {
+		super();
+		this.id_eleccion = id_eleccion;
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.fecha = fecha;
+		this.juez = juez;
+		this.actores = actores;
+		this.jurado = jurado;
+		this.actividades = actividades;
+	}
+
+
+
+
+	public Eleccion() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 
 	@Override
