@@ -15,10 +15,4 @@ public class Admin extends Actores{
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	
-	
-	
-	
 }

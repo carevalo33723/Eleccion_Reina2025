@@ -43,9 +43,4 @@ public class Candidata extends Actores{
 		this.eleccion = eleccion;
 	}
 
-
-
-	
-
-	
 }

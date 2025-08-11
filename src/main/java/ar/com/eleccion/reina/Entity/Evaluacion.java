@@ -67,6 +67,4 @@ public class Evaluacion {
 		this.item = item;
 	}
 
-	
-	
 }
