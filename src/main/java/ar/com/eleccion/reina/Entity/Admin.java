@@ -58,6 +58,5 @@ public class Admin extends Actores{
 
 	
 	
-	
-	
+
 }
