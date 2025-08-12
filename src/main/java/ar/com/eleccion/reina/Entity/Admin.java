@@ -26,6 +26,7 @@ public class Admin extends Actores{
 		this.rol = rol;
 	}
 
+
 	public String getEmail() {
 		return email;
 	}
@@ -60,4 +61,5 @@ public class Admin extends Actores{
 	
 	
 	
+
 }
