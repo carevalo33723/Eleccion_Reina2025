@@ -1,7 +1,5 @@
 package ar.com.eleccion.reina.Entity;
 
-import java.util.List;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,11 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
-
 /**
  * FIX CAMBIO DE STRATEGY= Se genera una tabla por cada subclase de la jerarquía,
  *  repitiendo los atributos de la superclase, en cada tabla que representan a las 
@@ -34,6 +28,7 @@ public  class Actores {
 	private String nombre;
 	private String apellido;
 	private String dni;
+	
 	public Actores() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -69,15 +64,5 @@ public  class Actores {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	
-	
-
-
-	
-	
-	
-
-
-	
 	
 }

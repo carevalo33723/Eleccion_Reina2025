@@ -1,7 +1,6 @@
 package ar.com.eleccion.reina.Entity;
 
 import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -42,9 +41,5 @@ public class Juez extends Actores{
 	public void setEleccion(Eleccion eleccion) {
 		this.eleccion = eleccion;
 	}
-
-
-	
-	
 
 }

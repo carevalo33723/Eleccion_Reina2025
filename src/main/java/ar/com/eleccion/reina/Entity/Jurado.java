@@ -42,14 +42,5 @@ public class Jurado extends Actores{
 	public void setEleccion(Eleccion eleccion) {
 		this.eleccion = eleccion;
 	}
-
-
 	
-
-	
-
-	
-	
-	
-
 }
