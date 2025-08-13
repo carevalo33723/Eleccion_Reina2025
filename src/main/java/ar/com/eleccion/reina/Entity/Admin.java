@@ -13,11 +13,10 @@ public class Admin extends Actores{
 	@ManyToOne
 	@JoinColumn(name = "id_rol")
 	private Rol rol;
+
 	
-	public Admin() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
+
 
 	public Admin(String email, String password, Rol rol) {
 		super();
@@ -26,6 +25,15 @@ public class Admin extends Actores{
 		this.rol = rol;
 	}
 
+	public Admin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Admin(Long id, String nombre, String apellido, String dni) {
+		super(id, nombre, apellido, dni);
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getEmail() {
 		return email;
@@ -50,7 +58,8 @@ public class Admin extends Actores{
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-
+	
+	
 
 	
 

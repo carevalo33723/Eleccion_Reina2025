@@ -13,6 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import ar.com.eleccion.reina.Service.IAdminService;
+import ar.com.eleccion.reina.Service.Imple.UsuarioMultiple;
 
 @Configuration
 public class SecurityConfiguration {
@@ -20,6 +21,9 @@ public class SecurityConfiguration {
 	 // Servicio que devuelve UserDetails 
     @Autowired
 	IAdminService adminService;
+    @Autowired
+    UsuarioMultiple usuMulti;
+    
     
     
     @Bean
@@ -52,13 +56,21 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .userDetailsService(adminService) 
+            .userDetailsService(usuMulti) 
 
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/registro**", "/dist/js/**", "/dist/css/**"
                 		, "/dist/img/**",
                 		"/plugins/**").permitAll()
+						
+						/*
+						 * .requestMatchers("/juez").hasRole("JUEZ")
+						 * .requestMatchers("/").hasRole("ADM")
+						 * .requestMatchers("/jurado").hasRole("JURADO")
+						 */
+						 
                 .anyRequest().authenticated()
+                
             )
             .formLogin(form -> form
                 .loginPage("/login")

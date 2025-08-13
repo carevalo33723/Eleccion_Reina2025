@@ -282,6 +282,20 @@
 					style="opacity: .8">
 				<span class="brand-text font-weight-light">App - Eleccion Reina</span>
 			</a>
+			<!-- Usuario y Cerrar sesión -->
+<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+        <i class="fas fa-user"></i> <span >Usuario</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="dropdown-item">
+                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+            </button>
+        </form>
+    </div>
+</li>
+
 
 			<!-- Sidebar -->
 			<div class="sidebar">

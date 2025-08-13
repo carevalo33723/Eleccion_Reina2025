@@ -10,6 +10,13 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Jurado extends Actores{
 	
+	private String email;
+	private String password;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_rol")
+	private Rol rol;
+	
 	@OneToMany(mappedBy = "jurado")
 	private List<Evaluacion> evaluaciones;
 	
@@ -17,15 +24,67 @@ public class Jurado extends Actores{
 	@JoinColumn(name = "id_eleccion")
 	private Eleccion eleccion;
 
+
+	public Jurado(String email, String password, Rol rol, List<Evaluacion> evaluaciones, Eleccion eleccion) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.rol = rol;
+		this.evaluaciones = evaluaciones;
+		this.eleccion = eleccion;
+	}
+
+
+
 	public Jurado() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
 	public Jurado(Long id, String nombre, String apellido, String dni) {
 		super(id, nombre, apellido, dni);
 		// TODO Auto-generated constructor stub
 	}
+
+
+
+	public Rol getRol() {
+		return rol;
+	}
+
+
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+
 
 	public List<Evaluacion> getEvaluaciones() {
 		return evaluaciones;
