@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -16,6 +17,7 @@ import ar.com.eleccion.reina.Service.IAdminService;
 import ar.com.eleccion.reina.Service.Imple.UsuarioMultiple;
 
 @Configuration
+
 public class SecurityConfiguration {
 	
 	 // Servicio que devuelve UserDetails 
@@ -61,14 +63,10 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/registro**", "/dist/js/**", "/dist/css/**"
                 		, "/dist/img/**",
-                		"/plugins/**").permitAll()
-						
-						/*
-						 * .requestMatchers("/juez").hasRole("JUEZ")
-						 * .requestMatchers("/").hasRole("ADM")
-						 * .requestMatchers("/jurado").hasRole("JURADO")
-						 */
-						 
+                		"/plugins/**").permitAll()					
+						  .requestMatchers("/juez").hasAuthority("ROL_JUEZ")					  
+						  .requestMatchers("/jurado").hasAuthority("ROL_JURADO")
+						  .requestMatchers("/eleccion/alta").hasAuthority("ROL_ADM")						 
                 .anyRequest().authenticated()
                 
             )
@@ -76,6 +74,7 @@ public class SecurityConfiguration {
                 .loginPage("/login")
                 .usernameParameter("email")   
                 .passwordParameter("password")
+                
                 .permitAll()
             )
             .logout(logout -> logout

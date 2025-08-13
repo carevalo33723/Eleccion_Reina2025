@@ -67,7 +67,7 @@ public class UsuarioMultiple implements UserDetailsService{
 		List<GrantedAuthority> autoridades = new ArrayList<>();
 
 		String nombreRol = rol.getNombre();
-
+		System.out.println(nombreRol);
 		if (nombreRol != null && !nombreRol.trim().isEmpty()) {
 
 			autoridades.add(new SimpleGrantedAuthority(nombreRol));
