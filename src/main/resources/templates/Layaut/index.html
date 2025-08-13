@@ -126,7 +126,7 @@
 
 		<!-- Preloader -->
 		<div class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__shake" src="/dist/img/logo.png" alt="AdminLTELogo" height="60" width="60">
+			<img class="animation__shake" src="/dist/img/logo-fiesta.png" alt="AdminLTELogo" height="60" width="60">
 		</div>
 <header th:fragment="header">
 		<!-- Navbar -->
@@ -329,10 +329,10 @@
 								</p>
 							</a>
 						</li>
-						<!-- primer li - socios -->
-						<li class="nav-item">
+						<!-- primer li - eleccion -->
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_ADM')">
 							<a href="#" class="nav-link">
-								<i class="nav-icon fas fa-walking"></i>
+								<i class="fa-solid fa-crown"></i>
 								<p>
 									Eleccion
 									<i class="fas fa-angle-left right"></i>
@@ -346,7 +346,7 @@
 										<p>Lista de Elecciones</p>
 									</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item" >
 									<a th:href="@{eleccion/alta}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Alta de Eleccion</p>
@@ -356,12 +356,12 @@
 								
 							</ul>
 						</li>
-						<!-- tercer li - centro operatico -->
-						<li class="nav-item">
+						<!-- tercer li - JUEZ -->
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_JUEZ')">
 							<a  class="nav-link">
-								<i class="nav-icon fas fa-chart-pie"></i>
+								<i class="fa-solid fa-gavel"></i>
 								<p>
-									Centro Operativo
+									Jurado
 									<i class="right fas fa-angle-left"></i>
 								</p>
 							</a>
@@ -369,25 +369,25 @@
 								<li class="nav-item">
 									<a  class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Lista Cent. Operativos</p>
+										<p>Lista JUEZ</p>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a  class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Alta Cent. Operativo</p>
+										<p>Alta juez</p>
 									</a>
 								</li>
 								
 							</ul>
 						</li>
-						<!-- cuarto li - cosecha -->
+						<!-- cuarto li - jurado -->
 						
-						<li class="nav-item">
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_JURADO')">
 							<a  class="nav-link">
-								<i class="nav-icon fas fa-tree"></i>
+								<i class="fas fa-user-friends"></i>
 								<p>
-									Cosecha
+									Jurado
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
@@ -395,20 +395,20 @@
 								<li class="nav-item">
 									<a   class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Lista Cosecha</p>
+										<p>Lista Jurado</p>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a  class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Alta Cosecha</p>
+										<p>Alta Jurado</p>
 									</a>
 								</li>
 								
 							</ul>
 						</li>
 						<!-- quinta li - arrendatario -->
-						<li class="nav-item">
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_NADIE')">
 							<a  class="nav-link">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
@@ -434,7 +434,7 @@
 						</li>
 						
 						<!-- sexto li - producto -->
-						<li class="nav-item">
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_NADIE')">
 							<a  class="nav-link">
 								<i class="nav-icon fas fa-seedling"></i>
 								<p>
@@ -460,7 +460,7 @@
 						</li>
 						
 						<!-- septimo li - Lote -->
-						<li class="nav-item">
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_NADIE')">
 							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-map-marker-alt"></i>
 								<p>
@@ -485,7 +485,7 @@
 								
 							</ul>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_NADIE')">
 							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-map-marker-alt"></i>
 								<p>
@@ -505,7 +505,7 @@
 								
 							</ul>
 						</li>
-						<li class="nav-header">Usuario</li>
+						<li class="nav-header" >Usuario</li>
 												
 						</ul>
 				</nav>
