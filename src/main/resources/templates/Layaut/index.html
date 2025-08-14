@@ -126,7 +126,7 @@
 
 		<!-- Preloader -->
 		<div class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__shake" src="/dist/img/logo-fiesta.png" alt="AdminLTELogo" height="60" width="60">
+			<img class="animation__shake" src="/dist/img/logo-fiesta.png" alt="AdminLTELogo" height="260" width="260">
 		</div>
 <header th:fragment="header">
 		<!-- Navbar -->
@@ -278,11 +278,16 @@
 		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:fragment="sidebar">
 			<!-- Brand Logo -->
 			<a href="index3.html" class="brand-link">
-				<img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+				<img src="/dist/img/logo-fiesta.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
 					style="opacity: .8">
 				<span class="brand-text font-weight-light">App - Eleccion Reina</span>
 			</a>
-			<!-- Usuario y Cerrar sesión -->
+
+
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+							<!-- Usuario y Cerrar sesión -->
 <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
         <i class="fas fa-user"></i> <span >Usuario</span>
@@ -295,19 +300,6 @@
         </form>
     </div>
 </li>
-
-
-			<!-- Sidebar -->
-			<div class="sidebar">
-				<!-- Sidebar user panel (optional) -->
-				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-					<div class="image">
-						<img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-					</div>
-					<div class="info">
-						<a href="#" class="d-block">--------------</a>
-					</div>
-				</div>
 
 				<!-- SidebarSearch Form - Eliminado-->
 
