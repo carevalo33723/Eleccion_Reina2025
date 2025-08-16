@@ -53,6 +53,12 @@ public class JuradoService implements IJuradoService{
 	public List<Jurado> listarJurados() {
 		return repoJurado.findAll();
 	}
+
+	@Override
+	public Jurado BuscarJuradoXMAil(String email) {
+		
+		return repoJurado.findByEmail(email);
+	}
 	
 	
 	

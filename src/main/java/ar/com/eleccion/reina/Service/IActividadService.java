@@ -6,14 +6,14 @@ import ar.com.eleccion.reina.Entity.Actividad;
 
 public interface IActividadService {
 	
-	public void crearActividad(Actividad actividad);
+	 void crearActividad(Actividad actividad);
 	
-	public void eliminarActividad(Long id_actividad);
+	 void eliminarActividad(Long id_actividad);
 	
-	public void editarActividad(Long id_actividad, Actividad actividad);
+	 void editarActividad(Long id_actividad, Actividad actividad);
 	
-	public Actividad buscarActividad(Long id_actividad);
+	Actividad buscarActividad(Long id_actividad);
 	
-	public List<Actividad> listarActividades();
+	 List<Actividad> listarActividades();
 
 }

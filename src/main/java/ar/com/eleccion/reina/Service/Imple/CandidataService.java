@@ -54,5 +54,13 @@ public class CandidataService implements ICandidataService{
 		
 		return repoCandidata.findAll();
 	}
+
+	@Override
+	public List<Candidata> BuscarCandidataPorElecccion(Long id) {
+		
+		return repoCandidata.findByEleccionId(id);
+	}
+
+	
 	
 }

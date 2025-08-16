@@ -15,16 +15,6 @@ public class HomeController {
 		return "Layaut/index"; 
 	      
 	    }
-	  @GetMapping("/juez")
-	    public String juez() { 	    	 	
-		return "juez/juez"; 
-	      
-	    }
-	  
-	  @GetMapping("/jurado")
-	    public String jurado() {	    	 	
-		return "jurado/jurado"; 
-	      
-	    }
+	 
 
 }

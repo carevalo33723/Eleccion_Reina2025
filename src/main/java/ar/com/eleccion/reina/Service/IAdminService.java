@@ -10,7 +10,7 @@ import ar.com.eleccion.reina.Entity.Admin;
 
 
 
-public interface IAdminService extends UserDetailsService{
+public interface IAdminService {
 	
 	
 	Admin guardar(Admin admin);

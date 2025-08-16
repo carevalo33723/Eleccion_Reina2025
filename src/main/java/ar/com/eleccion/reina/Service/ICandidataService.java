@@ -14,6 +14,8 @@ public interface ICandidataService {
 	
 	public Candidata buscarCandidata(Long id_candidata);
 	
-	public List<Candidata> listarCandidatas();
+	 List<Candidata> listarCandidatas();
+	
+	List<Candidata> BuscarCandidataPorElecccion ( Long id);
 	
 }

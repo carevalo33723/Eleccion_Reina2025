@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Layaut/index::head">
+	<meta charset="UTF-8" />
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+
+		<header th:replace="Layaut/index::header"></header>
+		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:replace="Layaut/index::sidebar"> </aside>
+
+		<div class="content-wrapper">
+			<div th:replace="Layaut/index::header1"></div>
+
+			<section class="content">
+				<div class="container-fluid">
+
+					<!-- Mensajes de éxito o error -->
+					<div th:if="${mensajeExito}" class="alert alert-success" th:text="${mensajeExito}"></div>
+					<div th:if="${mensajeError}" class="alert alert-danger" th:text="${mensajeError}"></div>
+
+					<!-- Información del jurado y actividad -->
+					<div class="card mb-3">
+						<div class="card-header bg-primary text-white">
+							Información de Evaluación
+						</div>
+						<div class="card-body p-2">
+							<form>
+
+
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Nombre</label>
+											<input type="text" class="form-control"
+												th:value="${evaluacion.jurado.nombre + ' ' + evaluacion.jurado.apellido}"
+												required disabled />
+										</div>
+
+
+
+										<div class="form-group">
+											<label>Eleccion</label>
+											<input type="text" class="form-control"
+												th:value="${evaluacion.candidata.eleccion.nombre}" required disabled />
+										</div>
+
+
+									</div>
+
+									<div class="col-md-6">
+
+										<div class="form-group">
+											<label>Fecha</label>
+											<input type="text" class="form-control"
+												th:value="${#temporals.format(hoy, 'dd/MM/yyyy')}" required disabled />
+										</div>
+
+										<div class="form-group">
+											<label>Actividad</label>
+											<input type="text" class="form-control"
+												th:value="${evaluacion.actividad.nombre}" required disabled />
+										</div>
+									</div>
+								</div>
+
+							</form>
+						</div>
+					</div>
+					<!-- Información de reina; Item y NOTA -->
+					<div class="card mb-3">
+						<div class="card-header bg-primary text-white">
+							Información de Evaluación
+						</div>
+						<div class="card-body p-2">
+							<form th:action="@{/jurado/guardar}" method="post">
+
+
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Nombre Candidata</label>
+											<input type="text" class="form-control" th:value="${evaluacion.candidata.nombre}"
+												  required disabled />
+												<input type="hidden" name="candidataId" th:value="${evaluacion.candidata.id}" />
+										</div>
+
+										<div class="form-group">
+											<label>Item a Evaluar</label>
+											<input type="text" class="form-control" th:value="${evaluacion.item.nombre}"
+												required disabled />
+												<input type="hidden" name="itemId" th:value="${evaluacion.item.id}" />
+										</div>
+
+									</div>
+
+									<div class="col-md-3">
+
+										<div class="form-group">
+											<label>Nota</label>
+											<input type="number" class="form-control" name="nota" required />
+										</div>
+
+
+									</div>
+								</div>
+								<div class="card-footer">
+									<button type="submit" class="btn btn-primary">Guardar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+
+
+				</div>
+			</section>
+		</div>
+
+		<footer th:replace="Layaut/index::footer"></footer>
+
+	</div>
+</body>
+
+</html>

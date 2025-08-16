@@ -27,6 +27,12 @@ public class Candidata extends Actores{
 		// TODO Auto-generated constructor stub
 	}
 
+	public Candidata(List<Evaluacion> evaluaciones, Eleccion eleccion) {
+		super();
+		this.evaluaciones = evaluaciones;
+		this.eleccion = eleccion;
+	}
+
 	public List<Evaluacion> getEvaluaciones() {
 		return evaluaciones;
 	}

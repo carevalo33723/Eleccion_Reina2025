@@ -16,7 +16,7 @@ public class Eleccion {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_eleccion;
+	private Long id;
 	
 	@Basic
 	private String nombre;
@@ -32,8 +32,25 @@ public class Eleccion {
 	 */
 	@OneToMany(mappedBy = "eleccion")
 	private List<Juez> juez;
+	
+	public Eleccion(Long id, String nombre, String tipo, LocalDate fecha, List<Juez> juez, List<Candidata> candidata,
+			List<Jurado> jurado, List<Actividad> actividades) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.fecha = fecha;
+		this.juez = juez;
+		this.candidata = candidata;
+		this.jurado = jurado;
+		this.actividades = actividades;
+	}
+
+
+
+
 	@OneToMany(mappedBy = "eleccion")
-	private List<Candidata> actores;
+	private List<Candidata> candidata;
 	
 	@OneToMany(mappedBy = "eleccion")
 	private List<Jurado> jurado;
@@ -44,15 +61,20 @@ public class Eleccion {
 
 
 
-	public Long getId_eleccion() {
-		return id_eleccion;
+
+
+
+
+
+	public Long getId() {
+		return id;
 	}
 
 
 
 
-	public void setId_eleccion(Long id_eleccion) {
-		this.id_eleccion = id_eleccion;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 
@@ -114,15 +136,19 @@ public class Eleccion {
 
 
 
-	public List<Candidata> getActores() {
-		return actores;
+
+
+
+
+	public List<Candidata> getCandidata() {
+		return candidata;
 	}
 
 
 
 
-	public void setActores(List<Candidata> actores) {
-		this.actores = actores;
+	public void setCandidata(List<Candidata> candidata) {
+		this.candidata = candidata;
 	}
 
 
@@ -156,18 +182,17 @@ public class Eleccion {
 
 
 
-	public Eleccion(Long id_eleccion, String nombre, String tipo, LocalDate fecha, List<Juez> juez,
-			List<Candidata> actores, List<Jurado> jurado, List<Actividad> actividades) {
-		super();
-		this.id_eleccion = id_eleccion;
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.fecha = fecha;
-		this.juez = juez;
-		this.actores = actores;
-		this.jurado = jurado;
-		this.actividades = actividades;
-	}
+
+
+
+
+
+	
+
+
+
+
+
 
 
 
@@ -180,10 +205,5 @@ public class Eleccion {
 
 
 
-	@Override
-	public String toString() {
-		return "Eleccion [id_eleccion=" + id_eleccion + ", nombre=" + nombre + ", tipo=" + tipo + ", fecha=" + fecha
-				+ ", actores=" + actores + ", actividades=" + actividades + "]";
-	}
 	
 }

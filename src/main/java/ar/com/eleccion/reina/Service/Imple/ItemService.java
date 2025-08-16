@@ -18,37 +18,39 @@ public class ItemService implements IItemService{
 	
 	repoItem.save(item);
 		
-	}
-
-	@Override
-	public void eliminarItem(Long id_item) {
-	
-		repoItem.deleteById(id_item);
-		
-	}
-
-	@Override
-	public void editarItem(Long id_item, Item item) {
-		
-		Item itemB = this.buscarItem(id_item);
-		
-		itemB.setNombre(item.getNombre());
-		itemB.setActividad(item.getActividad());
-		itemB.setEvaluaciones(item.getEvaluaciones());
-		
-		this.crearItem(itemB);
-	}
-
-	@Override
-	public Item buscarItem(Long id_item) {
-		
-		return repoItem.findById(id_item).orElse(null);
-	}
+	}	
 
 	@Override
 	public List<Item> listarItems() {
 	
 		return repoItem.findAll();
 	}
+
+
+	@Override
+	public void eliminarItem(Long id_item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void editarItem(Long id_item, Item item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public Item buscarItem(int id_item) {
+		
+		return repoItem.findById(id_item);
+	}
+
+
+
+	
+
+
 	
 }

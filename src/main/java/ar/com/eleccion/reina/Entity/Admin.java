@@ -30,6 +30,8 @@ public class Admin extends Actores{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public Admin(Long id, String nombre, String apellido, String dni) {
 		super(id, nombre, apellido, dni);
 		// TODO Auto-generated constructor stub

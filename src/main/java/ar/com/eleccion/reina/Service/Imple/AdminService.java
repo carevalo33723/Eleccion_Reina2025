@@ -37,33 +37,29 @@ public class AdminService implements IAdminService {
 		return adminrepo.save(admin);
 	}
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Admin admin = adminrepo.findByEmail(username);
-		if (admin == null) {
-			throw new UsernameNotFoundException("Usuario o password inválidos");
-		}
-		return new User(admin.getEmail(), admin.getPassword(), mapearAutoridadesRoles(admin.getRol()));
-	}
-
-	private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Rol rol) {
-
-		if (rol == null) {
-			return Collections.emptyList();
-		}
-
-		List<GrantedAuthority> autoridades = new ArrayList<>();
-
-		String nombreRol = rol.getNombre();
-
-		if (nombreRol != null && !nombreRol.trim().isEmpty()) {
-
-			autoridades.add(new SimpleGrantedAuthority(nombreRol));
-		}
-
-		return autoridades;
-	}
-
+	/*
+	 * @Override public UserDetails loadUserByUsername(String username) throws
+	 * UsernameNotFoundException { Admin admin = adminrepo.findByEmail(username); if
+	 * (admin == null) { throw new
+	 * UsernameNotFoundException("Usuario o password inválidos"); } return new
+	 * User(admin.getEmail(), admin.getPassword(),
+	 * mapearAutoridadesRoles(admin.getRol())); }
+	 * 
+	 * private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Rol
+	 * rol) {
+	 * 
+	 * if (rol == null) { return Collections.emptyList(); }
+	 * 
+	 * List<GrantedAuthority> autoridades = new ArrayList<>();
+	 * 
+	 * String nombreRol = rol.getNombre();
+	 * 
+	 * if (nombreRol != null && !nombreRol.trim().isEmpty()) {
+	 * 
+	 * autoridades.add(new SimpleGrantedAuthority(nombreRol)); }
+	 * 
+	 * return autoridades; }
+	 */
 
 	@Autowired
 	private IAdminRepository repoAdmin;

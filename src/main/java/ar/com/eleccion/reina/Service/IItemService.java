@@ -12,7 +12,7 @@ public interface IItemService {
 	
 	public void editarItem(Long id_item, Item item);
 	
-	public Item buscarItem(Long id_item);
+	public Item buscarItem(int id_item);
 	
 	public List<Item> listarItems();
 }

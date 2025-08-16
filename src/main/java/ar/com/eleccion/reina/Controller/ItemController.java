@@ -36,20 +36,9 @@ public class ItemController {
 		return "Item eliminado correctamente";
 	}
 	
-	@PutMapping("/editar/{id_item}")
-	public Item editarItem(@PathVariable ("id_item") Long id_item,
-			                         @RequestBody Item item) {
-		
-		servItem.editarItem(id_item, item);
-		
-		return servItem.buscarItem(id_item);
-	}
+	
 
-	@GetMapping("/buscar/{id_item}")
-	public Item buscarItem(@PathVariable ("id_item") Long id_item) {
-		
-		return servItem.buscarItem(id_item);
-	}
+	
 	
 	
 	@GetMapping("/listar")
