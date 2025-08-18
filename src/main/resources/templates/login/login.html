@@ -23,6 +23,8 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Inicia sesión para comenzar</p>
+<div th:if="${errorMsg}" class="alert alert-danger" th:text="${errorMsg}"></div>
+<div th:if="${msg}" class="alert alert-success" th:text="${msg}"></div>
 
       <form th:action="@{/login}" method="post">
         <div class="input-group mb-3">

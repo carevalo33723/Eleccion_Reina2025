@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ar.com.eleccion.reina.Entity.Actividad;
 import ar.com.eleccion.reina.Entity.Candidata;
@@ -90,7 +91,7 @@ public class EvaluacionController {
 	 
 	@GetMapping("/evaluar")
 	public String evaluarActividad( HttpSession session,
-	                               @AuthenticationPrincipal UserDetails user,
+	                               @AuthenticationPrincipal UserDetails user,RedirectAttributes redirectAttrs,
 	                               Model model) {
 		
 		// Recuperamos actividad y elección de la sesión
@@ -149,6 +150,7 @@ public class EvaluacionController {
 	                ProximaEvaluacionDTO pendiente = new ProximaEvaluacionDTO(candidata, item, actividad, jurado);
 	                model.addAttribute("evaluacion", pendiente);
 	                model.addAttribute("hoy", java.time.LocalDate.now());
+	                
 	                return "evaluacion/evluacionForm";
 	            }
 	        }
@@ -157,7 +159,9 @@ public class EvaluacionController {
 	    // Si llegamos acá, todas las candidatas + items fueron evaluadas poe y cerramos session por si las moscas
 	    session.removeAttribute("actividadId");
 	    session.removeAttribute("eleccionId");
-	    return "Layaut/index";
+	 // Guardamos un flag para el modal
+	    redirectAttrs.addFlashAttribute("mostrarModal", true);
+	    return "redirect:/";
 	}
 
 
@@ -166,10 +170,12 @@ public class EvaluacionController {
 	    public String guardarEvaluacion(@AuthenticationPrincipal UserDetails user,
 	                                    @RequestParam Long candidataId,
 	                                    @RequestParam Long itemId,
-	                                    @RequestParam int nota) {
+	                                    @RequestParam int nota,
+	                                    RedirectAttributes redirectAttrs) {
 	        Jurado jurado = juradoRepo.BuscarJuradoXMAil(user.getUsername());
 	        evaluacionService.guardarEvaluacion(jurado, candidataId.intValue(), itemId.intValue(), nota);
-
+	     // Guardamos un flag para el modal
+	        redirectAttrs.addFlashAttribute("mostrarModal", true);
 	        return "redirect:/jurado/evaluar";
 	    }
 

@@ -71,8 +71,8 @@
 					</div>
 					<!-- Información de reina; Item y NOTA -->
 					<div class="card mb-3">
-						<div class="card-header bg-primary text-white">
-							Información de Evaluación
+						<div class="card-header bg-primary text-danger">
+							Información de Candidata
 						</div>
 						<div class="card-body p-2">
 							<form th:action="@{/jurado/guardar}" method="post">
@@ -82,8 +82,8 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>Nombre Candidata</label>
-											<input type="text" class="form-control" th:value="${evaluacion.candidata.nombre}"
-												  required disabled />
+											<input type="text" class="form-control text-danger" th:value="${evaluacion.candidata.nombre + ' ' + evaluacion.candidata.apellido}"
+												  required disabled  />
 												<input type="hidden" name="candidataId" th:value="${evaluacion.candidata.id}" />
 										</div>
 
@@ -116,11 +116,35 @@
 
 				</div>
 			</section>
+			<!-- Modal de éxito -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">Operación exitosa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        ✅ La nota fue cargada con exito, ahora agrega la nota del siguiente ITEM.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 		</div>
 
 		<footer th:replace="Layaut/index::footer"></footer>
 
 	</div>
+	<!-- Bootstrap Bundle con Popper (necesario para los modals) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script que lo muestra si corresponde -->
+<script th:if="${mostrarModal}">
+    var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+    myModal.show();
+</script>
 </body>
 
 </html>

@@ -60,10 +60,10 @@
 
 										<div class="form-group">
 											<label>Actividad</label>
-											<select class="form-control" id="centroSelect" name="actividadId">
-												<option value="">Selecciona una Activedad</option>
+											<select class="form-control" id="centroSelect" name="actividadId" required >
+												<option value="" >Selecciona una Activedad</option>
 												<option th:each="act : ${actividades}" th:value="${act.id_actividad}"
-													th:text="${act.nombre}"></option>
+													th:text="${act.nombre}" ></option>
 											</select>
 										</div>
 									</div>
