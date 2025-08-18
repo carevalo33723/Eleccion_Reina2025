@@ -71,4 +71,9 @@ public class EvaluacionService implements IEvaluacionService {
 
 	}
 
+	@Override
+	public List<Evaluacion> buscarEvaluacionesXJurado(Long id_jurado) {
+		return evaluacionRepo.findByJurado_Id(id_jurado);
+	}
+
 }

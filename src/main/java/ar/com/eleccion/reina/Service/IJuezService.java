@@ -1,6 +1,6 @@
 package ar.com.eleccion.reina.Service;
 
-import java.util.List;
+import java.util.List; 
 import ar.com.eleccion.reina.Entity.Juez;
 
 public interface IJuezService {
@@ -14,5 +14,7 @@ public interface IJuezService {
 	public Juez buscarJuez(Long id_juez);
 	
 	public List<Juez> listarJuez();
+	
+	public Juez BuscarJuezXMAil (String email);
 	
 }

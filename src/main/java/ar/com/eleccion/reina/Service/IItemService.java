@@ -2,6 +2,7 @@ package ar.com.eleccion.reina.Service;
 
 import java.util.List;
 
+import ar.com.eleccion.reina.Entity.Actividad;
 import ar.com.eleccion.reina.Entity.Item;
 
 public interface IItemService {
@@ -15,4 +16,6 @@ public interface IItemService {
 	public Item buscarItem(int id_item);
 	
 	public List<Item> listarItems();
+	
+	public List<Item> buscarItemsXActividad(Actividad actividad);
 }

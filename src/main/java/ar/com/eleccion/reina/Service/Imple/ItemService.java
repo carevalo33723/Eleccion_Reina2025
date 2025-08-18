@@ -3,6 +3,8 @@ package ar.com.eleccion.reina.Service.Imple;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ar.com.eleccion.reina.Entity.Actividad;
 import ar.com.eleccion.reina.Entity.Item;
 import ar.com.eleccion.reina.Repository.IItemRepository;
 import ar.com.eleccion.reina.Service.IItemService;
@@ -47,10 +49,9 @@ public class ItemService implements IItemService{
 		return repoItem.findById(id_item);
 	}
 
+	@Override
+	public List<Item> buscarItemsXActividad(Actividad actividad) {
+		return repoItem.findByActividadOrderByOrdenAsc(actividad);
+	}
 
-
-	
-
-
-	
 }
