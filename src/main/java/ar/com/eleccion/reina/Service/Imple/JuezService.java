@@ -55,5 +55,10 @@ public class JuezService implements IJuezService{
 		return repoJuez.findAll();
 	}
 
+	@Override
+	public Juez BuscarJuezXMAil(String email) {
+		return repoJuez.findByEmail(email);
+	}
+
 	
 }

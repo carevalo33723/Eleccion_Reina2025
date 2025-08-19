@@ -12,5 +12,11 @@ public interface IEvaluacionService {
 	
 	
 	void guardarEvaluacion(Jurado jurado, int candidataId, int itemId, int nota);
+
 	List<Evaluacion> BuscarTodos();
+
+	
+	public List<Evaluacion> buscarEvaluacionesXJurado(Long id_jurado);
+	
+
 }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Layaut/index::head">
+	<meta charset="UTF-8" />
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+
+
+	<div class="wrapper">
+
+		<!-- Preloader -->
+		<div class="preloader flex-column justify-content-center align-items-center">
+			<img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+		</div>
+		<header th:replace="Layaut/index::header"></header>
+		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:replace="Layaut/index::sidebar"> </aside>
+
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div th:replace="Layaut/index::header1"></div>
+
+			<!-- contenido dinamico -->
+
+			<section class="content">
+				<div class="container-fluid">
+						
+						<div class="card-header bg-primary text-white">
+							
+							<h2 class="mb-2">Candidatas</h2>	
+							
+						</div>
+		
+					    <div class="card mb-4">
+					      <div class="card-body">
+					        <ul th:each="c : ${candidatas}" class="list-group">
+					          <li th:text="${c.nombre + ' ' + c.apellido}" class="list-group-item"></li>
+					         
+					        </ul>
+					      </div>
+					    </div>
+
+					    <div class="card mb-4">
+					      <div class="card-body">
+							
+							<div class="card-header bg-primary text-white">
+								
+								<h5 class="card-title">Items Evaluados</h5>
+								
+							</div>
+							
+					        <ul th:each="i : ${items}" class="list-group">
+					          <li th:text="${i.nombre}" class="list-group-item"></li>
+					          
+					        </ul>
+					      </div>
+					    </div>
+
+					    <div class="card mb-4">
+					      <div class="card-body">
+							
+							<div class="card-header bg-primary text-white">
+								
+								<h5 class="card-title">Puntajes Otorgados</h5>
+											
+							</div>
+							
+										        <table class="table">
+					          <thead>
+					            <tr>
+					              <th>Candidata</th>
+					              <th>Item</th>
+					              <th>Puntaje</th>
+					            </tr>
+					          </thead>
+							  <tbody>
+							    <tr th:each="ev : ${evaluaciones}">
+							      <td th:text="${ev.candidata.nombre + ' ' + ev.candidata.apellido}"></td>
+							      <td th:text="${ev.item.nombre}"></td>
+							      <td th:text="${ev.nota}"></td>
+							    </tr>
+							  </tbody>
+					        </table>
+					      </div>
+					    </div>
+
+					    <a th:href="@{/juez/principal}" class="btn btn-secondary">Volver</a>
+					  
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.fin de contenido -->
+		</div>
+
+
+
+
+		<footer th:replace="Layaut/index::footer"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+
+	
+
+</body>
+
+</html>

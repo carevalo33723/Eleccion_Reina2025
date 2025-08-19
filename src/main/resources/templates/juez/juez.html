@@ -27,62 +27,80 @@
 
 			<section class="content">
 				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12">
+					<div id="vistaPrincipal">
+						
+						<form th:action="@{/juez/detalle/evaluacion}" method="get">
+						
+						<div class="card mb-4">
+						  <div class="card-header bg-primary text-white">
+						    <h3 class="card-title">Datos del Juez</h3>
+						  </div>
+						  <div class="card-body">
+						    <div class="row">
 
-							<!-- /.card -->
-
-							<div class="card">
-								<div class="card-header">
-									<h3 class="card-title">Lista de SubSocios</h3>
-								</div>
-								<!-- /.card-header -->
-								<div class="card-body">
-									<table id="example1" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>NOMBRE</th>
-												<th>APELLIDO</th>
-												<th>DIRECCION</th>
-												<th>SOCIO</th>
-												<th width="15%" class="text-center"><a class="btn btn-primary"><i class="fa fa-user-plus"
-															aria-hidden="true"></i> </a></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr > 
-							<td >soy juez</td>						
-							<td >soy juez</td>
-							<td >soy juez</td>						
-							<td >soy juez</td>
-							<td>
-													<span>
-														<p>
-															<a 
-																class="btn btn-warning btn-sm"><i
-																	class="fa fa-pencil-square-o"
-																	aria-hidden="true"></i> </a>
-
-															<a class="btn btn-danger btn-sm"><i
-																	class="fas fa-user-minus"></i></a>
-														</p>
-
-
-													</span>
-												</td>
-											</tr>
-
-										</tbody>
-
-									</table>
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
+						      <div class="col-md-6">
+						        <p class="card-text">Dni: <strong th:text="${juez.dni}"></strong></p>
+						        <p class="card-text">Nombre: <strong th:text="${juez.nombre}"></strong></p>
+						        <p class="card-text">Apellido: <strong th:text="${juez.apellido}"></strong></p>
+						        <p class="card-text">Email: <strong th:text="${juez.email}"></strong></p>
+						      </div>
+							  
+						      <div class="col-md-6">
+						        <div class="mb-3">
+						          <label for="actividadSelect" class="form-label">Seleccionar Actividad</label>
+						          <select class="form-select" name="actividadId">
+						            <option selected disabled>Seleccione una actividad</option>
+						            <option th:each="act : ${actividades}"
+						                    th:value="${act.id_actividad}"
+						                    th:text="${act.nombre}"></option>
+						          </select>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
 						</div>
-						<!-- /.col -->
+
+					  <div class="card">
+					    
+							
+							<div class="card-header bg-primary text-white">
+													    <h5 class="card-title">Lista de Jurados</h5>
+													  </div>
+					      
+					      <table class="table table-hover">
+					        <thead>
+					          <tr>
+					            <th>DNI</th>
+					            <th>Nombre</th>
+					            <th>Apellido</th>
+					            <th>Email</th>
+					            <th>Acciones</th>
+					          </tr>
+					        </thead>
+					        <tbody>
+					          <tr th:each="jur : ${jurados}">
+					            <td th:text="${jur.dni}"></td>
+					            <td th:text="${jur.nombre}"></td>
+					            <td th:text="${jur.apellido}"></td>
+					            <td th:text="${jur.email}"></td>
+					            <td>
+					              <button class="btn btn-outline-secondary btn-sm me-2">
+					                <i class="fas fa-print"></i> Imprimir
+					              </button>
+								  
+					              <button type="submit" name="juradoId" th:value="${jur.id}" 
+								   class="btn btn-primary btn-sm">Detalle</button>
+					            </td>
+					          </tr>
+					        </tbody>
+					      </table>
+						  
+						  </form>
+						  
+					    </div>
+					  </div>
 					</div>
-					<!-- /.row -->
+
 				</div>
 				<!-- /.container-fluid -->
 			</section>
@@ -102,10 +120,7 @@
 	</div>
 	<!-- ./wrapper -->
 
-
-
-
-
+	
 
 </body>
 
