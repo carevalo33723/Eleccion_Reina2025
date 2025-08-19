@@ -71,4 +71,10 @@ public class EvaluacionService implements IEvaluacionService {
 
 	}
 
+	@Override
+	public List<Evaluacion> BuscarTodos() {
+		
+		return evaluacionRepo.findAll();
+	}
+
 }

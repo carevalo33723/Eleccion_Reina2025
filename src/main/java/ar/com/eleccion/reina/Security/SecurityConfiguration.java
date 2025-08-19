@@ -61,7 +61,7 @@ public class SecurityConfiguration {
             .userDetailsService(usuMulti) 
 
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/registro**", "/dist/js/**", "/dist/css/**"
+                .requestMatchers("/registro**", "/dist/js/**", "/dist/css/**","/reporte"
                 		, "/dist/img/**",
                 		"/plugins/**").permitAll()					
 						  .requestMatchers("/juez").hasAuthority("ROL_JUEZ")					  
