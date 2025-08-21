@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ar.com.eleccion.reina.Entity.Eleccion;
 import ar.com.eleccion.reina.Service.IEleccionService;
@@ -30,9 +30,10 @@ public class EleccionController {
 	}
 	
 	@PostMapping("/crear")
-	public String crearEleccion(Eleccion eleccion) {		
-		servEleccion.crearEleccion(eleccion);		
-		return "Guardado Correctamente";
+	public String crearEleccion(Eleccion eleccion,RedirectAttributes redirectAttrs) {		
+		servEleccion.crearEleccion(eleccion);
+		redirectAttrs.addFlashAttribute("mostrarModal", true);
+		return "redirect:/eleccion/alta";
 	}
 	
 	@PostMapping("/eliminar")

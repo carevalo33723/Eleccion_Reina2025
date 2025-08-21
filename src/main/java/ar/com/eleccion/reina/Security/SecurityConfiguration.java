@@ -64,9 +64,9 @@ public class SecurityConfiguration {
                 .requestMatchers("/registro**", "/dist/js/**", "/dist/css/**","/reporte"
                 		, "/dist/img/**",
                 		"/plugins/**").permitAll()					
-						  .requestMatchers("/juez").hasAuthority("ROL_JUEZ")					  
-						  .requestMatchers("/jurado").hasAuthority("ROL_JURADO")
-						  .requestMatchers("/eleccion/alta").hasAuthority("ROL_ADM")						 
+						  .requestMatchers("/juez","/acta/**").hasAuthority("ROL_JUEZ")					  
+						  .requestMatchers("/jurado/**").hasAuthority("ROL_JURADO")
+						  .requestMatchers("/eleccion/**","/candidata/**","/juez**","/jurado/**","/actividad/**","/item/**").hasAuthority("ROL_ADM")						 
                 .anyRequest().authenticated()
                 
             )

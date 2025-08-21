@@ -1,6 +1,9 @@
 package ar.com.eleccion.reina.Entity;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -9,6 +12,12 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Candidata extends Actores{
+	
+	@DateTimeFormat(pattern =  "yyyy-MM-dd")
+	private LocalDate fecha;
+	
+	private String localidad;
+	private String Institucion;
 	
 	@OneToMany(mappedBy = "candidata")
 	private List<Evaluacion> evaluaciones;
@@ -27,10 +36,41 @@ public class Candidata extends Actores{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Candidata(List<Evaluacion> evaluaciones, Eleccion eleccion) {
+	public Candidata(LocalDate fecha, String localidad, String institucion,
+			List<Evaluacion> evaluaciones, Eleccion eleccion) {
 		super();
+		this.fecha = fecha;
+		
+		this.localidad = localidad;
+		Institucion = institucion;
 		this.evaluaciones = evaluaciones;
 		this.eleccion = eleccion;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+	public String getInstitucion() {
+		return Institucion;
+	}
+
+	public void setInstitucion(String institucion) {
+		Institucion = institucion;
 	}
 
 	public List<Evaluacion> getEvaluaciones() {
@@ -48,5 +88,7 @@ public class Candidata extends Actores{
 	public void setEleccion(Eleccion eleccion) {
 		this.eleccion = eleccion;
 	}
+
+	
 
 }

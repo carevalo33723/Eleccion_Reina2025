@@ -29,6 +29,8 @@ public  class Actores {
 	private String apellido;
 	private String dni;
 	
+	
+	
 	public Actores() {
 		super();
 		// TODO Auto-generated constructor stub

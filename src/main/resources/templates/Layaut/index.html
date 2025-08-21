@@ -4,35 +4,19 @@
 <head th:fragment="head">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-0:eq(0)');
-    $('#example2').DataTable.destroy()({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
 
-<!-- FontAwesome -->
+	
+
+	<!-- FontAwesome -->
 	<script src="https://kit.fontawesome.com/16f8dd85c6.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<!-- Última versión desde CDN de Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<!-- Última versión desde CDN de Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- DataTables -->
-  <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+	<!-- DataTables -->
+	<link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 	<!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -55,15 +39,15 @@
 	<!-- summernote -->
 	<link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
 	<!-- CSS adicional -->
-	
-		<!-- jQuery -->
-<script src="/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
+	<!-- jQuery -->
+	<script src="/plugins/jquery/jquery.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<script>
+		$.widget.bridge('uibutton', $.ui.button)
+	</script>
 	<!-- Bootstrap 4 -->
 	<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- ChartJS -->
@@ -105,7 +89,32 @@
 		$(function () {
 			$("#example1").DataTable({
 				"responsive": true, "lengthChange": false, "autoWidth": false,
-				"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+				"buttons": [
+        {
+          extend: 'copy',
+          title: 'Listado de puntaje por jurado'
+        },
+        {
+          extend: 'csv',
+          title: 'Listado de puntaje por jurado'
+        },
+        {
+          extend: 'excel',
+          title: 'Listado de puntaje por jurado'
+        },
+        {
+          extend: 'pdf',
+          title: 'Listado de puntaje por jurado',
+          messageTop: 'Este reporte contiene la información de todas las votaciones '
+        },
+        {
+          extend: 'print',
+          title: 'Listado de puntaje por jurado',
+          messageTop: 'Generado automáticamente',
+  
+        },
+        "colvis"
+      ]
 			}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 			$('#example2').DataTable({
 				"paging": true,
@@ -118,6 +127,162 @@
 			});
 		});
 	</script>
+	
+  <script>
+$(function () {
+    $("#example3").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "paging": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "buttons": [
+            {
+                extend: 'copy',
+                title: 'Listado de Candidatas',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'csv',
+                title: 'Listado de Candidatas',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'excel',
+                title: 'Listado de Candidatas',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'pdf',
+                title: 'Listado de Candidatas',
+                messageTop: 'Este reporte contiene la información de todas las candidatas',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'print',
+                title: 'Listado de Candidatas',
+                messageTop: 'Generado automáticamente',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            "colvis"
+        ]
+    }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+});
+</script>
+
+<script>
+$(function () {
+    $("#example4").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "paging": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "buttons": [
+            {
+                extend: 'copy',
+                title: 'Listado de jurados',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'csv',
+                title: 'Listado de jurados',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'excel',
+                title: 'Listado de jurados',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'pdf',
+                title: 'Listado de jurados',
+                messageTop: 'Este reporte contiene la información de todas los jurados',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'print',
+                title: 'Listado de jurados',
+                messageTop: 'Generado automáticamente',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            "colvis"
+        ]
+    }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
+});
+</script>
+<script>
+$(function () {
+    $("#example5").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "paging": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "buttons": [
+            {
+                extend: 'copy',
+                title: 'puntaje de candidata por jurado',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'csv',
+                title: 'puntaje de candidata por jurado',
+                exportOptions: {
+                    columns: ':visible:not(:last-child)'
+                }
+            },
+            {
+                extend: 'excel',
+                title: 'puntaje de candidata por jurado',
+                
+            },
+            {
+                extend: 'pdf',
+                title: 'puntaje de candidata por jurado',
+                messageTop: 'Este reporte contiene la información de puntaje de candidata',
+                
+            },
+            {
+                extend: 'print',
+                title: 'puntaje de candidata por jurado',
+                messageTop: 'Generado automáticamente',
+                
+            },
+            "colvis"
+        ]
+    }).buttons().container().appendTo('#example5_wrapper .col-md-6:eq(0)');
+});
+</script>
+
 
 </head>
 
@@ -128,47 +293,48 @@
 		<div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="/dist/img/logo-fiesta.png" alt="AdminLTELogo" height="260" width="260">
 		</div>
-<header th:fragment="header">
-		<!-- Navbar -->
-		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
-			<!-- Left navbar links -->
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-				</li>
-				<li class="nav-item d-none d-sm-inline-block">
-					<a href="index3.html" class="nav-link">Inicio</a>
-				</li>
-				
-			</ul>
+		<header th:fragment="header">
+			<!-- Navbar -->
+			<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+				<!-- Left navbar links -->
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+								class="fas fa-bars"></i></a>
+					</li>
+					<li class="nav-item d-none d-sm-inline-block">
+						<a href="index3.html" class="nav-link">Inicio</a>
+					</li>
 
-			<!-- Right navbar links -->
-			<ul class="navbar-nav ml-auto">
-				<!-- Navbar Search -->
-				<li class="nav-item">
-					<a class="nav-link" data-widget="navbar-search" href="#" role="button">
-						<i class="fas fa-search"></i>
-					</a>
-					<div class="navbar-search-block">
-						<form class="form-inline">
-							<div class="input-group input-group-sm">
-								<input class="form-control form-control-navbar" type="search" placeholder="Search"
-									aria-label="Search">
-								<div class="input-group-append">
-									<button class="btn btn-navbar" type="submit">
-										<i class="fas fa-search"></i>
-									</button>
-									<button class="btn btn-navbar" type="button" data-widget="navbar-search">
-										<i class="fas fa-times"></i>
-									</button>
+				</ul>
+
+				<!-- Right navbar links -->
+				<ul class="navbar-nav ml-auto">
+					<!-- Navbar Search -->
+					<li class="nav-item">
+						<a class="nav-link" data-widget="navbar-search" href="#" role="button">
+							<i class="fas fa-search"></i>
+						</a>
+						<div class="navbar-search-block">
+							<form class="form-inline">
+								<div class="input-group input-group-sm">
+									<input class="form-control form-control-navbar" type="search" placeholder="Search"
+										aria-label="Search">
+									<div class="input-group-append">
+										<button class="btn btn-navbar" type="submit">
+											<i class="fas fa-search"></i>
+										</button>
+										<button class="btn btn-navbar" type="button" data-widget="navbar-search">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
 								</div>
-							</div>
-						</form>
-					</div>
-				</li>
+							</form>
+						</div>
+					</li>
 
-				<!-- Messages Dropdown Menu -->
-				<!--<li class="nav-item dropdown">
+					<!-- Messages Dropdown Menu -->
+					<!--<li class="nav-item dropdown">
 					<a class="nav-link" data-toggle="dropdown" href="#">
 						<i class="far fa-comments"></i>
 						<span class="badge badge-danger navbar-badge">3</span>
@@ -229,8 +395,8 @@
 						<a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
 					</div>
 				</li>-->
-				<!-- Notifications Dropdown Menu -->
-				<!--<li class="nav-item dropdown">
+					<!-- Notifications Dropdown Menu -->
+					<!--<li class="nav-item dropdown">
 					<a class="nav-link" data-toggle="dropdown" href="#">
 						<i class="far fa-bell"></i>
 						<span class="badge badge-warning navbar-badge">15</span>
@@ -256,21 +422,21 @@
 						<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 					</div>
 				</li>-->
-				<li class="nav-item">
-					<a class="nav-link" data-widget="fullscreen" href="#" role="button">
-						<i class="fas fa-expand-arrows-alt"></i>
-					</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" data-widget="fullscreen" href="#" role="button">
+							<i class="fas fa-expand-arrows-alt"></i>
+						</a>
+					</li>
 
-				<!--<li class="nav-item">
+					<!--<li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>-->
-			</ul>
-		</nav>
-		<!-- /.navbar -->
-</header>
+				</ul>
+			</nav>
+			<!-- /.navbar -->
+		</header>
 
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:fragment="sidebar">
@@ -285,19 +451,19 @@
 
 			<!-- Sidebar -->
 			<div class="sidebar">
-							<!-- Usuario y Cerrar sesión -->
-<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
-        <i class="fas fa-user"></i> <span >Usuario</span>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        <form th:action="@{/logout}" method="post">
-            <button type="submit" class="dropdown-item">
-                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
-            </button>
-        </form>
-    </div>
-</li>
+				<!-- Usuario y Cerrar sesión -->
+				<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+						<i class="fas fa-user"></i> <span>Usuario</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+						<form th:action="@{/logout}" method="post">
+							<button type="submit" class="dropdown-item">
+								<i class="fas fa-sign-out-alt"></i> Cerrar sesión
+							</button>
+						</form>
+					</div>
+				</li>
 
 				<!-- SidebarSearch Form - Eliminado-->
 
@@ -309,16 +475,8 @@
 						<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 						<!-- primer li - rendicion -->
-						
-						<li class="nav-item">
-							<a href="pages/widgets.html" class="nav-link">
-								<i class="nav-icon fas fa-th"></i>
-								<p>
-									Rendicion
-									<span class="right badge badge-danger">New</span>
-								</p>
-							</a>
-						</li>
+
+
 						<!-- primer li - eleccion -->
 						<li class="nav-item" sec:authorize="hasAuthority('ROL_ADM')">
 							<a href="#" class="nav-link">
@@ -331,24 +489,24 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a  class="nav-link">
+									<a class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Lista de Elecciones</p>
 									</a>
 								</li>
-								<li class="nav-item" >
+								<li class="nav-item">
 									<a th:href="@{/eleccion/alta}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Alta de Eleccion</p>
 									</a>
 								</li>
-								
-								
+
+
 							</ul>
 						</li>
 						<!-- tercer li - JUEZ -->
-						<li class="nav-item" sec:authorize="hasAuthority('ROL_JUEZ')">
-							<a  class="nav-link">
+						<li class="nav-item" sec:authorize="hasAnyAuthority('ROL_JUEZ','ROL_ADM')">
+							<a class="nav-link">
 								<i class="fa-solid fa-gavel"></i>
 								<p>
 									Juez
@@ -356,118 +514,119 @@
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a  th:href="@{/juez/principal}" class="nav-link">
+								<li class="nav-item" sec:authorize="hasAuthority('ROL_JUEZ')">
+									<a th:href="@{/juez/principal}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Pantalla principal</p>
 									</a>
 								</li>
-							
-								
+								<li class="nav-item" sec:authorize="hasAuthority('ROL_ADM')">
+									<a th:href="@{/juez/alta}" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Alta de Juez de Paz</p>
+									</a>
+								</li>
+
+
 							</ul>
 						</li>
 						<!-- cuarto li - jurado -->
-						
-						<li class="nav-item" sec:authorize="hasAuthority('ROL_JURADO')">
-							<a  class="nav-link">
+
+						<li class="nav-item" sec:authorize="hasAnyAuthority('ROL_JURADO','ROL_ADM')">
+							<a class="nav-link">
 								<i class="fas fa-user-friends"></i>
 								<p>
 									Jurado
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{/jurado/carga}"  class="nav-link">
+							<ul class="nav nav-treeview" >
+								<li class="nav-item" sec:authorize="hasAuthority('ROL_JURADO')">
+									<a th:href="@{/jurado/carga}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Iniciar</p>
 									</a>
 								</li>
-								<li class="nav-item">
-									<a th:href="@{/reporte}" class="nav-link">
+								<li class="nav-item" >
+									<a th:href="@{/jurado/alta}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Alta Jurado</p>
 									</a>
 								</li>
-								
+
 							</ul>
 						</li>
 						<!-- quinta li - arrendatario -->
-						<li class="nav-item" sec:authorize="hasAuthority('ROL_NADIE')">
-							<a  class="nav-link">
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_ADM')">
+							<a class="nav-link">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
-									SubSocios
+									Candidatas
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a  class="nav-link">
+									<a th:href="@{/candidata/listar}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Lista SubSocios</p>
+										<p>Lista de Candidatas</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/forms/advanced.html" class="nav-link">
+									<a th:href="@{/candidata/alta}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Alta Subcios</p>
+										<p>Alta Candidatas</p>
 									</a>
 								</li>
-								
+
 							</ul>
 						</li>
-						
+
 						<!-- sexto li - producto -->
-						<li class="nav-item" sec:authorize="hasAuthority('ROL_NADIE')">
-							<a  class="nav-link">
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_JUEZ')">
+							<a class="nav-link">
 								<i class="nav-icon fas fa-seedling"></i>
 								<p>
-									Productos
+									Acta Final
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/tables/simple.html" class="nav-link">
+									<a th:href="@{/acta/reporte}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Alta Productos</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a  class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
-										<p>Listado productos</p>
+										<p>Acta</p>
 									</a>
 								</li>
 								
+
 							</ul>
 						</li>
-						
-						<!-- septimo li - Lote -->
-						<li class="nav-item" sec:authorize="hasAuthority('ROL_NADIE')">
+
+						<!-- septimo li - actividad -->
+						<li class="nav-item" sec:authorize="hasAuthority('ROL_ADM')">
 							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-map-marker-alt"></i>
 								<p>
-									Lotes
+									Actividad e Item
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									
-									<a class="nav-link">
+								<li  class="nav-item">
+
+									<a th:href="@{/actividad/alta}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Alta Lotes</p>
+										<p>Alta Actividad</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a  class="nav-link">
+									<a th:href="@{/item/alta}" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Listado de Lotes</p>
+										<p>Alta de Items</p>
 									</a>
 								</li>
-								
+
 							</ul>
 						</li>
 						<li class="nav-item" sec:authorize="hasAuthority('ROL_NADIE')">
@@ -480,19 +639,19 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									
-									<a  class="nav-link">
+
+									<a class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>pdf arrendatario</p>
 									</a>
 								</li>
-								
-								
+
+
 							</ul>
 						</li>
-						<li class="nav-header" >Usuario</li>
-												
-						</ul>
+						<li class="nav-header">Usuario</li>
+
+					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->
 			</div>
@@ -594,24 +753,26 @@
 				</div> /.container-fluid 
 			</section>-->
 			<!-- /.content -->
-			
+
 			<!-- Modal de éxito -->
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title" id="successModalLabel">Operación exitosa</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        ✅ Se cargo con EXITO las notas Correspondiente a esta actividad.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
+			<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header bg-success text-white">
+							<h5 class="modal-title" id="successModalLabel">Operación exitosa</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Cerrar"></button>
+						</div>
+						<div class="modal-body">
+							✅ Se cargo con EXITO las notas Correspondiente a esta actividad.
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
@@ -630,12 +791,12 @@
 	</div>
 	<!-- ./wrapper -->
 	<!-- Bootstrap Bundle con Popper (necesario para los modals) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script th:if="${mostrarModal}">
-    var myModal = new bootstrap.Modal(document.getElementById('successModal'));
-    myModal.show();
-</script>
+	<script th:if="${mostrarModal}">
+		var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+		myModal.show();
+	</script>
 
 </body>
 

@@ -34,6 +34,7 @@ public class HomeController {
 	  @GetMapping("/")
 	    public String home(@AuthenticationPrincipal UserDetails user, Model model) {	  
 		 
+		  
 		return "Layaut/index"; 
 	      
 	    }

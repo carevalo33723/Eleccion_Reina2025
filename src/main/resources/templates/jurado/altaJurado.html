@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Layaut/index::head">
+	<meta charset="UTF-8" />
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+
+		<!-- Preloader -->
+		<div class="preloader flex-column justify-content-center align-items-center">
+			<img class="animation__shake" src="/dist/img/logo-fiesta.png" alt="AdminLTELogo" height="60" width="60">
+		</div>
+		<header th:replace="Layaut/index::header"></header>
+		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:replace="Layaut/index::sidebar"> </aside>
+
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div th:replace="Layaut/index::header1"></div>
+
+			<!-- contenido dinamico -->
+
+			<section class="content">
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">ALTA DE JURADO</h3>
+            </div>
+
+            <!-- Mensajes de éxito y error -->
+            <div th:if="${mensajeExito}" class="alert alert-success">
+                <p th:text="${mensajeExito}"></p>
+            </div>
+            <div th:if="${mensajeError}" class="alert alert-danger">
+                <p th:text="${mensajeError}"></p>
+            </div>
+
+            <div class="card-body">
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="card card-default">
+                            
+                            <div class="card-body">
+                                <form th:action="@{/jurado/crear}" th:object="${can}" method="post">
+
+                                    <div class="row">
+                                        <!-- Columna izquierda -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Nombre</label>
+                                                <input type="text" class="form-control" th:field="*{nombre}" required />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Apellido</label>
+                                                <input type="text" class="form-control" th:field="*{apellido}" required />
+                                            </div>
+
+                                            
+                                            <div class="form-group">
+                                                <label>DNI</label>
+                                                <input type="number" class="form-control" th:field="*{dni}" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Rol</label>
+                                                <select class="form-control" name="rolId" required>
+                                                    <option value="">Selecciona el rol</option>
+                                                    <option th:each="el : ${ro}" th:value="${el.id}" th:text="${el.nombre}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Columna derecha -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" th:field="*{email}" required />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Contraseña</label>
+                                                <input type="text" class="form-control" th:field="*{password}" required />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Elección</label>
+                                                <select class="form-control" name="eleccionId" required>
+                                                    <option value="">Selecciona la Elección</option>
+                                                    <option th:each="el : ${ele}" th:value="${el.id}" th:text="${el.nombre}">
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal de éxito -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">Operación exitosa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        ✅ El Jurado fue cargada con exito.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+							<!-- /.fin de contenido -->
+						</div>
+			</section>
+
+
+
+
+			<!-- Control Sidebar -->
+			<aside class="control-sidebar control-sidebar-dark">
+				<!-- Control sidebar content goes here -->
+			</aside>
+			<!-- /.control-sidebar -->
+		</div>
+		<!-- ./wrapper -->
+		<!-- Mensaje de éxito -->
+
+	</div>
+
+
+
+	<footer th:replace="Layaut/index::footer"></footer>
+	<!-- Bootstrap Bundle con Popper (necesario para los modals) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script que lo muestra si corresponde -->
+<script th:if="${mostrarModal1}">
+    var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+    myModal.show();
+</script>
+
+</body>
+
+</html>

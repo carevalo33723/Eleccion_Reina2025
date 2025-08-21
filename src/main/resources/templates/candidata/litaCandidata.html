@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Layaut/index::head">
+	<meta charset="UTF-8" />
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+
+
+	<div class="wrapper">
+
+		<!-- Preloader -->
+		<div class="preloader flex-column justify-content-center align-items-center">
+			<img class="animation__shake" src="/dist/img/logo-fiesta.png" alt="AdminLTELogo" height="60" width="60">
+		</div>
+		<header th:replace="Layaut/index::header"></header>
+		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:replace="Layaut/index::sidebar"> </aside>
+
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div th:replace="Layaut/index::header1"></div>
+
+			<!-- contenido dinamico -->
+
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+
+							<!-- /.card -->
+
+							<div class="card">
+								<div class="card-header">
+									<h3 class="card-title">Lista de SubSocios</h3>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<table id="example3" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>NOMBRE</th>
+												<th>APELLIDO</th>
+												<th>DNI</th>
+												<th>LOCALIDAD</th>
+												<th>NACIMIENTO</th>
+												<th>INSTITUCION</th>
+												<th></th>
+												
+																							</tr>
+										</thead>
+										<tbody>
+											<tr th:each="centro:${candi}"> 
+							<td th:text="${centro.nombre}"></td>						
+							<td th:text="${centro.apellido}"></td>
+							<td th:text="${centro.dni}"></td>						
+							<td th:text="${centro.localidad}"></td>
+							<td th:text="${centro.fecha}"></td>
+							<td th:text="${centro.institucion}"></td>
+							<td
+													<span>
+														<p>
+															<a 
+																class="btn btn-warning btn-sm"><i
+																	class="fa fa-pencil-square-o"
+																	aria-hidden="true"></i> </a>
+
+															<a class="btn btn-danger btn-sm"><i
+																	class="fas fa-user-minus"></i></a>
+														</p>
+
+
+													</span>
+												</td>
+											</tr>
+
+										</tbody>
+
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.fin de contenido -->
+		</div>
+
+
+
+
+		<footer th:replace="Layaut/index::footer"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+
+
+
+
+
+
+</body>
+
+</html>

@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import ar.com.eleccion.reina.Entity.Admin;
 import ar.com.eleccion.reina.Entity.Jurado;
@@ -23,6 +24,7 @@ import ar.com.eleccion.reina.Service.IReporteService;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Controller
+@RequestMapping("/acta")
 public class actaOficial {
 	
 	@Autowired
@@ -82,7 +84,7 @@ public class actaOficial {
     	
     	
     return ResponseEntity.ok()
-    		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=listaArrend.pdf")
+    		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=ActaOficial.pdf")
     		.contentType(MediaType.APPLICATION_PDF)
     		.body(reportePDF);}
 

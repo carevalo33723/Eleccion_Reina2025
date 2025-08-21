@@ -108,6 +108,7 @@
 		<field name="nombre" class="java.lang.String"/>
 		<field name="apellido" class="java.lang.String"/>
 		<field name="dni" class="java.lang.String"/>
+		<field name="totalPuntos" class="java.lang.Integer"/>
 	</subDataset>
 	<parameter name="jurado" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="admin" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
@@ -118,11 +119,316 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
+	<group name="Admin">
+		<groupExpression><![CDATA["admin"]]></groupExpression>
+		<groupHeader>
+			<band height="100">
+				<staticText>
+					<reportElement positionType="Float" x="18" y="5" width="467" height="30" uuid="f0ce412a-ccbc-40a5-bbf1-1568768bb35d"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+					<text><![CDATA[• Siendo responsable del sistema de cargas y cómputos:]]></text>
+				</staticText>
+				<componentElement>
+					<reportElement positionType="Float" x="30" y="32" width="467" height="58" uuid="5ffdd909-cec8-4ed0-9cf1-d9bd320f3492">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+						<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+						<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+						<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="Admin" uuid="88ff30c3-e771-470a-85dd-80657f7cdc5e">
+							<dataSourceExpression><![CDATA[$P{admin}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="150" uuid="06e3dd67-1860-4ec0-8007-c1547f7d12da">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:columnHeader style="Table 1_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="150" height="20" uuid="90ff149f-1631-4fed-ad42-8c9166a30b6c"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[NOMBRE]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table 1_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="150" height="30" uuid="430020ce-4a3c-4733-959e-207b35083e96"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="150" uuid="ae9e4b68-21d3-4025-ac05-53e867320133">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:columnHeader style="Table 1_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="150" height="20" uuid="0f06c73a-e082-4b51-82e5-43eac1051faf"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[APELLIDO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table 1_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="150" height="30" uuid="b92000a0-56f7-4298-ae17-292732454c5d"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="167" uuid="f42f6ea8-74fc-452c-af68-d8d59c5c0f96">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:columnHeader style="Table 1_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="167" height="20" uuid="042827b4-4132-418f-abf1-7054b69ed3dc"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[DNI]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table 1_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="167" height="30" uuid="8e73c5e2-6c0d-472d-82d6-0a7b02b68635"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="jurados">
+		<groupExpression><![CDATA["jurados"]]></groupExpression>
+		<groupHeader>
+			<band height="94">
+				<staticText>
+					<reportElement x="20" y="5" width="467" height="30" uuid="f70de7c2-5eb6-44ed-a7fb-a68c8fb91129"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+					<text><![CDATA[• Actúan como miembros del  Jurados en este acto, según detalle:]]></text>
+				</staticText>
+				<componentElement>
+					<reportElement positionType="Float" x="40" y="24" width="467" height="60" uuid="db93a95f-91aa-4eba-b673-f8cf550abf46">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="jurado" uuid="16744e32-fc2e-493b-b8ed-2fee0f1f828d">
+							<dataSourceExpression><![CDATA[$P{jurado}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="150" uuid="8557b4dd-ad00-4ac3-b0d7-f1b8d3b8732b">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="150" height="20" uuid="329872b9-5c4e-4a63-915d-f47dc4cf7061"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[NOMBRE]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="150" height="30" uuid="3d8e3db2-4fcf-4cf3-9273-a1af5c88afb5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="150" uuid="6f4b97ac-9899-4e4f-ba4c-e587922a6b97">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="150" height="20" uuid="46f95fb1-3c68-4bb7-972e-b7c9ed19cba7"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[APELLIDO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="150" height="30" uuid="bb2f5076-654f-4747-8415-5bbc371585df"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="170" uuid="73ee5f1f-fb3b-4018-b283-baa58c00d35a">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="170" height="20" uuid="24519ee1-2367-4c00-8acf-c4b817ec6be2"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[DNI]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="170" height="30" uuid="92fdcf23-f7a7-4a2f-bde6-caf30015a9c1"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="reinas">
+		<groupExpression><![CDATA["reinas"]]></groupExpression>
+		<groupHeader>
+			<band height="125">
+				<staticText>
+					<reportElement positionType="Float" x="-10" y="0" width="467" height="20" uuid="75ccd7d7-d4be-4a83-9fdb-0f921d342608"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+					<text><![CDATA[• Resultando el veredicto que se detalla:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="90" y="20" width="190" height="20" uuid="9153373c-7325-46e2-a524-d71464be5df6"/>
+					<textElement>
+						<font fontName="Tahoma" size="12" isBold="true" isItalic="false" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[REINA DE LOS ESTUDIANTES: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="350" y="20" width="142" height="20" uuid="a506978f-9400-4b09-bf5f-60d73bb3cc20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{electa}]]></textFieldExpression>
+				</textField>
+				<componentElement>
+					<reportElement positionType="Float" x="120" y="53" width="350" height="66" uuid="00c55337-e216-44c9-8b9c-04af089accc2">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+						<property name="com.jaspersoft.studio.table.style.table_header" value="Table 2_TH"/>
+						<property name="com.jaspersoft.studio.table.style.column_header" value="Table 2_CH"/>
+						<property name="com.jaspersoft.studio.table.style.detail" value="Table 2_TD"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="resultado" uuid="fa64a408-5954-41f2-a7ae-2cc5938a79e2">
+							<dataSourceExpression><![CDATA[$P{reinas}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="90" uuid="02f95534-794d-4712-a2ab-102b7ea98822">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="90" height="20" uuid="dd3d1028-bd2b-46c1-a2ce-23fe4787328f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[NOMBRE]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table 2_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="90" height="30" uuid="eeab471c-dcf1-49d8-b554-08d106e637f8"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="0da2031f-d35c-4dc9-a080-d70569282f1a">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="90" height="20" uuid="ec1f6b9a-2c06-453b-8f7d-cf5fb53b4d6a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[APELLIDO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table 2_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="90" height="30" uuid="e751bc0a-2c26-4ddd-9564-42a74310ff7c"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="de0ad492-c376-436a-8028-66beaac95945">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="90" height="20" uuid="7df35e6e-0a4a-462e-baba-20e76836acce"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[DNI	]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table 2_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="90" height="30" uuid="c5aed6e2-adb7-43b6-b5ab-b3af85461a0a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="80" uuid="6a3e6805-fdc6-49f7-aaba-e40ec523f142">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+							<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="80" height="20" uuid="17b0b54e-2cb0-41e9-b956-f2bfa21ca47a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<text><![CDATA[Total Puntos]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table 2_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="80" height="30" uuid="feea2b8f-910a-48cc-8eb8-882715e7ba09"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{totalPuntos}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</band>
+		</groupHeader>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="49" splitType="Stretch">
+		<band height="157" splitType="Stretch">
 			<staticText>
 				<reportElement x="80" y="0" width="424" height="20" forecolor="#000000" uuid="252b0618-a27c-40bb-8746-f488423678ed"/>
 				<textElement textAlignment="Center" markup="none">
@@ -148,316 +454,38 @@ Colegio Secundario Nº 5.030    –   E.E:.T N°3168                            
 				<reportElement x="60" y="0" width="47" height="48" uuid="909c2603-d275-454e-8153-b53cf5bed5be"/>
 				<imageExpression><![CDATA[$P{logo3168}]]></imageExpression>
 			</image>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="43" splitType="Stretch">
 			<staticText>
-				<reportElement x="170" y="1" width="186" height="24" uuid="7b0e4cf6-8925-48c8-8848-f70e3046e499"/>
+				<reportElement x="160" y="43" width="186" height="24" uuid="7b0e4cf6-8925-48c8-8848-f70e3046e499"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="14" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ACTA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="70" y="13" width="480" height="30" uuid="7ad86789-06c2-417b-b7de-464724910cae"/>
+				<reportElement x="47" y="59" width="480" height="30" uuid="7ad86789-06c2-417b-b7de-464724910cae"/>
 				<textElement>
 					<font fontName="Calibri" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ELECCIÓN  REPRESENTANTE DE LOS ESTUDIANTES DE SARAVIA]]></text>
 			</staticText>
-			<line>
-				<reportElement x="3" y="33" width="517" height="1" uuid="f7922dee-49bc-4f62-a901-29f56405fbec"/>
-			</line>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="69">
 			<staticText>
-				<reportElement x="-1" y="0" width="545" height="67" uuid="1084aba5-d8c1-476d-95b0-c2d3bc28f530"/>
+				<reportElement x="4" y="84" width="545" height="67" uuid="1084aba5-d8c1-476d-95b0-c2d3bc28f530"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<text><![CDATA[------------ En la localidad de Apolinario Saravia, departamento Anta, provincia de Salta, a los 06 días del mes de Septiembre de 2025, en el Complejo Deportivo Municipal de la localidad de Apolinario Saravia, siendo horas ………….....se procede a dar inicio al acto Elección Representante de los Estudiantes, nivel secundario, de la localidad de Apolinario Saravia.]]></text>
 			</staticText>
 			<textField pattern="HH:mm">
-				<reportElement x="120" y="28" width="100" height="30" uuid="99800686-8bc3-4f4f-a48c-66e5d38df76f"/>
+				<reportElement x="133" y="110" width="100" height="30" uuid="99800686-8bc3-4f4f-a48c-66e5d38df76f"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
-	</columnHeader>
-	<detail>
-		<band height="292" splitType="Stretch">
-			<componentElement>
-				<reportElement x="26" y="28" width="467" height="60" uuid="db93a95f-91aa-4eba-b673-f8cf550abf46">
-					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="jurado" uuid="16744e32-fc2e-493b-b8ed-2fee0f1f828d">
-						<dataSourceExpression><![CDATA[$P{jurado}]]></dataSourceExpression>
-					</datasetRun>
-					<jr:column width="150" uuid="8557b4dd-ad00-4ac3-b0d7-f1b8d3b8732b">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="150" height="20" uuid="329872b9-5c4e-4a63-915d-f47dc4cf7061"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[NOMBRE]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="150" height="30" uuid="3d8e3db2-4fcf-4cf3-9273-a1af5c88afb5"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="150" uuid="6f4b97ac-9899-4e4f-ba4c-e587922a6b97">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="150" height="20" uuid="46f95fb1-3c68-4bb7-972e-b7c9ed19cba7"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[APELLIDO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="150" height="30" uuid="bb2f5076-654f-4747-8415-5bbc371585df"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="170" uuid="73ee5f1f-fb3b-4018-b283-baa58c00d35a">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="170" height="20" uuid="24519ee1-2367-4c00-8acf-c4b817ec6be2"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[DNI]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="170" height="30" uuid="92fdcf23-f7a7-4a2f-bde6-caf30015a9c1"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-			<staticText>
-				<reportElement x="26" y="6" width="467" height="30" uuid="f70de7c2-5eb6-44ed-a7fb-a68c8fb91129"/>
-				<textElement>
-					<font fontName="Tahoma" size="12"/>
-				</textElement>
-				<text><![CDATA[• Actúan como miembros del  Jurados en este acto, según detalle:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="25" y="84" width="467" height="30" uuid="f0ce412a-ccbc-40a5-bbf1-1568768bb35d"/>
-				<textElement>
-					<font fontName="Tahoma" size="12"/>
-				</textElement>
-				<text><![CDATA[• Siendo responsable del sistema de cargas y cómputos:]]></text>
-			</staticText>
-			<componentElement>
-				<reportElement x="26" y="107" width="467" height="67" uuid="5ffdd909-cec8-4ed0-9cf1-d9bd320f3492">
-					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
-					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
-					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
-				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Admin" uuid="88ff30c3-e771-470a-85dd-80657f7cdc5e">
-						<dataSourceExpression><![CDATA[$P{admin}]]></dataSourceExpression>
-					</datasetRun>
-					<jr:column width="150" uuid="06e3dd67-1860-4ec0-8007-c1547f7d12da">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:columnHeader style="Table 1_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="150" height="20" uuid="90ff149f-1631-4fed-ad42-8c9166a30b6c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[NOMBRE]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table 1_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="150" height="30" uuid="430020ce-4a3c-4733-959e-207b35083e96"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="150" uuid="ae9e4b68-21d3-4025-ac05-53e867320133">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:columnHeader style="Table 1_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="150" height="20" uuid="0f06c73a-e082-4b51-82e5-43eac1051faf"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[APELLIDO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table 1_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="150" height="30" uuid="b92000a0-56f7-4298-ae17-292732454c5d"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="167" uuid="f42f6ea8-74fc-452c-af68-d8d59c5c0f96">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:columnHeader style="Table 1_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="167" height="20" uuid="042827b4-4132-418f-abf1-7054b69ed3dc"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[DNI]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table 1_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="167" height="30" uuid="8e73c5e2-6c0d-472d-82d6-0a7b02b68635"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-			<staticText>
-				<reportElement positionType="Float" x="27" y="169" width="467" height="20" uuid="75ccd7d7-d4be-4a83-9fdb-0f921d342608"/>
-				<textElement>
-					<font fontName="Tahoma" size="12"/>
-				</textElement>
-				<text><![CDATA[• Resultando el veredicto que se detalla:]]></text>
-			</staticText>
-			<componentElement>
-				<reportElement x="26" y="219" width="467" height="66" uuid="00c55337-e216-44c9-8b9c-04af089accc2">
-					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 2_TH"/>
-					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 2_CH"/>
-					<property name="com.jaspersoft.studio.table.style.detail" value="Table 2_TD"/>
-				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="resultado" uuid="fa64a408-5954-41f2-a7ae-2cc5938a79e2">
-						<dataSourceExpression><![CDATA[$P{reinas}]]></dataSourceExpression>
-					</datasetRun>
-					<jr:column width="90" uuid="02f95534-794d-4712-a2ab-102b7ea98822">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="20" uuid="dd3d1028-bd2b-46c1-a2ce-23fe4787328f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[NOMBRE]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table 2_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="eeab471c-dcf1-49d8-b554-08d106e637f8"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="0da2031f-d35c-4dc9-a080-d70569282f1a">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="20" uuid="ec1f6b9a-2c06-453b-8f7d-cf5fb53b4d6a"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[APELLIDO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table 2_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="e751bc0a-2c26-4ddd-9564-42a74310ff7c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="de0ad492-c376-436a-8028-66beaac95945">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="20" uuid="7df35e6e-0a4a-462e-baba-20e76836acce"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[DNI	]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table 2_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="c5aed6e2-adb7-43b6-b5ab-b3af85461a0a"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Tahoma" size="12"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-			<staticText>
-				<reportElement x="28" y="194" width="190" height="20" uuid="9153373c-7325-46e2-a524-d71464be5df6"/>
-				<textElement>
-					<font fontName="Tahoma" size="12" isBold="true" isItalic="false" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[REINA DE LOS ESTUDIANTES: ]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="226" y="191" width="142" height="20" uuid="a506978f-9400-4b09-bf5f-60d73bb3cc20"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{electa}]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
+	</title>
 	<pageFooter>
-		<band height="22" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<staticText>
 				<reportElement x="-10" y="0" width="546" height="22" uuid="5f8ee58c-a0e7-4d3b-8205-ab8dbc331c50"/>
 				<text><![CDATA[Reporte Exportado de QUEEN- soft - Sistema de Votacion realizado por Instituto de Carreras Sup. N° 6030 - LAS LAJITAS]]></text>
